@@ -12,10 +12,10 @@ extern int cmp_discount_price_market(const void *a, const void *b);
 
 extern void search_market_result_0(char user_id[30], int choise_num);
 
-// 筛选打折的商品
+// 筛选打折的菜品
 extern void search_market_result_1(char user_id[30]);
 
-// 打印不打折的商品
+// 打印不打折的菜品
 extern void search_market_result_2(char user_id[30]);
 
 extern void search_market_result_3(char user_id[30]);
@@ -27,7 +27,7 @@ extern int search_market_choose();
 // search_market所使用的选择函数
 extern void search_market(char user_id[30]);
 
-//根据超市名称进行查询
+//根据饭店名称进行查询
 extern void search_market_begin(char user_id[30]);
 
 #endif /*_SEARCH_FOR_MARKET_H_*/

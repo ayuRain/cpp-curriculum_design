@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// 检查商品ID
+// 检查菜品ID
 char *check_goods_name(char *temp_goods_name) {
   do {
     scanf("%s", temp_goods_name);
@@ -692,7 +692,7 @@ void add_goods(char user_id[30]) {
     if (!database_goods_index(temp_goods_name, 0)) {
       // 清���结构体
       for (i = 0; i < 100; i++) {
-        strcpy(goods_index[i].shop_id, "");    // 超市ID
+        strcpy(goods_index[i].shop_id, "");    // 饭店ID
         goods_index[i].unit_price = 0;         // 单价
         goods_index[i].in_price = 0;           // 进价
         goods_index[i].sales_volume = 0;       // 销量
@@ -717,7 +717,7 @@ void add_goods(char user_id[30]) {
       i++;
     i_goods = i;
 
-    strcpy(goods_index[i_goods].shop_id, temp_shop_id);        // 超市编号
+    strcpy(goods_index[i_goods].shop_id, temp_shop_id);        // 饭店编号
     goods_index[i_goods].unit_price = temp_unit_price;         // 零售价格
     goods_index[i_goods].in_price = temp_in_price;             // 进货价格
     goods_index[i_goods].sales_volume = temp_sales_volume;     // 销量

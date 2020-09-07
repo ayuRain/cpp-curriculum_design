@@ -40,7 +40,7 @@ struct tm {
 
 数据:
   1行4列
-  超市名 | 管理员姓名 | 邮箱 | 密码
+  饭店名 | 管理员姓名 | 邮箱 | 密码
 
 接收:
   user_id 用户ID
@@ -54,7 +54,7 @@ struct tm {
 *************************************************/
 
 typedef struct {
-  char shop_id[30];  // 超市名
+  char shop_id[30];  // 饭店名
   char name[10];     // 管理员姓名
   char email[30];    // 邮箱
   char password[30]; // 密码
@@ -105,7 +105,7 @@ extern int database_consumer_information(char user_id[30], int read_type);
 
 /*************************************************
 标题:
-  goods_index数据库 按商品种类索引的商品清单 可读写
+  goods_index数据库 按菜品种类索引的菜品清单 可读写
 
 路径:
   ./database/goods_index/
@@ -115,10 +115,10 @@ extern int database_consumer_information(char user_id[30], int read_type);
 
 数据:
   n行8列
-  超市ID | 单价 | 进价 | 销量 | 库存 | 折扣价格 | 折扣开始时间 |折扣结束时间
+  饭店ID | 单价 | 进价 | 销量 | 库存 | 折扣价格 | 折扣开始时间 |折扣结束时间
 
 接收:
-  goods_name: 商品种类
+  goods_name: 菜品种类
   read_type: 读写类型
     0: 读取
     1: 写入
@@ -129,7 +129,7 @@ extern int database_consumer_information(char user_id[30], int read_type);
 *************************************************/
 
 typedef struct {
-  char shop_id[30];     // 超市ID
+  char shop_id[30];     // 饭店ID
   float unit_price;     // 单价
   float in_price;       // 进价
   int sales_volume;     // 销量
@@ -155,7 +155,7 @@ extern int database_goods_index(char user_id[30], int read_type);
 
 存放数据:
   n行7列
-  订单编号 | 顾客ID | 购买时间 | 商品名 | 购买数量 | 单价 | 总价
+  订单编号 | 顾客ID | 购买时间 | 菜品名 | 购买数量 | 单价 | 总价
 
 接收:
   user_id: 用户ID
@@ -172,7 +172,7 @@ typedef struct {
   char order_id[30];    // 订单编号
   char consumer_id[30]; // 顾客编号
   struct tm sold_time;  // 购买时间
-  char goods_name[30];  // 商品名
+  char goods_name[30];  // 菜品名
   int purchase_num;     // 购买数量
   float unit_price;     // 单价
   float all_price;      // 总价
@@ -194,7 +194,7 @@ extern int database_order_admin_all(char shop_id[30], int read_type);
 
 存放数据
   n行3列
-  顾客ID | 商品名 | 购买数量
+  顾客ID | 菜品名 | 购买数量
 
 接收:
   user_id: 用户ID
@@ -209,7 +209,7 @@ extern int database_order_admin_all(char shop_id[30], int read_type);
 
 typedef struct {
   char consumer_id[30]; // 顾客ID
-  char goods_name[30];  //商品名
+  char goods_name[30];  //菜品名
   int purchase_num;     // 购买数量
 } STU_order_admin_consumer;
 
@@ -229,7 +229,7 @@ extern int database_order_admin_consumer(char shop_id[30], int read_type);
 
 存放数据
 n行4列
-商品名 | 销量 | 营业额 | 利润
+菜品名 | 销量 | 营业额 | 利润
 
 接收:
   user_id: 用户ID
@@ -243,7 +243,7 @@ n行4列
 *************************************************/
 
 typedef struct {
-  char goods_name[30]; // 商品名
+  char goods_name[30]; // 菜品名
   int purchase_num;    // 购买数量
   float all_price;     // 营业额
   float profit;        // 利润
@@ -265,7 +265,7 @@ extern int database_order_admin_goods(char shop_id[30], int read_type);
 
 存放数据
 n行6列
-订单编号 | 购买时间 | 商品名 | 购买数量 | 单价 | 总价
+订单编号 | 购买时间 | 菜品名 | 购买数量 | 单价 | 总价
 
 接收:
   user_id: 用户ID
@@ -281,7 +281,7 @@ n行6列
 typedef struct {
   char order_id[30];   // 订单编号
   char sold_time[25];  // 购买时间
-  char goods_name[30]; // 商品名
+  char goods_name[30]; // 菜品名
   int purchase_num;    // 购买数量
   float unit_price;    // 单价
   float all_price;     // 总价
@@ -293,7 +293,7 @@ extern int database_order_consumer(char user_id[30], int read_type);
 
 /*************************************************
 标题:
-  shop_index数据库 商品清单_以管理员ID为索引 可读写
+  shop_index数据库 菜品清单_以管理员ID为索引 可读写
 
 路径:
   ./database/shop_index/
@@ -306,7 +306,7 @@ n行8列
 顾客ID | 单价 | 进价 | 销量 | 库存 | 折扣价格 | 折扣开始时间 |折扣结束时间
 
 接收:
-  shop_id: 超市信息
+  shop_id: 饭店信息
   read_type: 读写类型
     0: 读取
     1: 写入
@@ -317,7 +317,7 @@ n行8列
 *************************************************/
 
 typedef struct {
-  char goods_name[30];  // 商品名
+  char goods_name[30];  // 菜品名
   float unit_price;     // 零售价格
   float in_price;       // 进货价格
   int sales_volume;     // 销量
@@ -343,7 +343,7 @@ extern int database_shop_index(char user_id[30], int read_type);
 
 存放数据
 n行3列
-商品名 | 管理员ID | 打算购买数量
+菜品名 | 管理员ID | 打算购买数量
 
 接收:
   user_id: 用户ID
@@ -357,7 +357,7 @@ n行3列
 *************************************************/
 
 typedef struct {
-  char goods_name[30]; // 商品名
+  char goods_name[30]; // 菜品名
   char shop_id[30];    //管理员ID
   int purchase_num;    // 购买数量
 } STU_shopping_cart;
@@ -378,14 +378,14 @@ extern int database_shopping_cart(char user_id[30], int read_type);
 
 数据:
   1行2列
-  商品名 | 超市名
+  菜品名 | 饭店名
 
 接收:
   read_type: 读写类型
     - 0: 读取
     - 1: 写入
   good_id: 用户ID
-  shop_id: 商品名
+  shop_id: 菜品名
 
 
 返回:
@@ -408,10 +408,10 @@ extern void database_all_index(int read_type, char goods_name[30],
 
 数据:
   1行1列
-  商品ID
+  菜品ID
 
 接收:
-  goods_name: 商品名
+  goods_name: 菜品名
   read_type: 读写类型
     - 0: 读取
     - 1: 写入

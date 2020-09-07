@@ -43,7 +43,7 @@ void register_result_1() {
     }
   }
 
-  printf("\n请填写您所属的超市:\n");
+  printf("\n请填写您所属的饭店:\n");
   scanf("%s", store);
 
   printf("\n请填写您的姓名:\n");
@@ -68,7 +68,7 @@ void register_result_1() {
 
   database_admin_information(user_id_temp, 1);
 
-  strcpy(admin_information.shop_id, store);     // 超市名
+  strcpy(admin_information.shop_id, store);     // 饭店名
   strcpy(admin_information.name, name);         // 管理员姓名
   strcpy(admin_information.email, email);       // 邮箱
   strcpy(admin_information.password, password); // 密码

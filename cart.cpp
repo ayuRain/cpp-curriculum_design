@@ -27,7 +27,7 @@ int cart_choose_2() {
 void cart_result_2(char user_id[30]) {
   int i = 0, k = 0;
   printf("您的购物车信息如下:\n");
-  printf("|序号\t|商品名\t\t|超市名\t\t|购买数量\n");
+  printf("|序号\t|菜品名\t\t|饭店名\t\t|购买数量\n");
   while (shopping_cart[i].purchase_num != 0) {
     printf("|%2d\t|%-15s\t|%-15s\t|%4d\n", i + 1, shopping_cart[i].goods_name,
            shopping_cart[i].shop_id, shopping_cart[i].purchase_num);
@@ -38,7 +38,7 @@ void cart_result_2(char user_id[30]) {
   int choose_num;
 
   do {
-    printf("\n请选择您想查看的商品(按0返回)\n");
+    printf("\n请选择您想查看的菜品(按0返回)\n");
     scanf("%s", choose_str);
 
     // 检验输入是否正确
@@ -72,9 +72,9 @@ void cart_result_2(char user_id[30]) {
   choose_num -= 1;
 
   printf("您查看的信息为:\n");
-  printf("商品名: %s\n超市编号: %s\n购买数量: %d\n",
+  printf("菜品名: %s\n饭店编号: %s\n购买数量: %d\n",
          shopping_cart[choose_num].goods_name,  // 货物ID
-         shopping_cart[choose_num].shop_id,     // 超市ID
+         shopping_cart[choose_num].shop_id,     // 饭店ID
          shopping_cart[choose_num].purchase_num //购买数量
   );
 
@@ -92,10 +92,10 @@ void cart_result_2(char user_id[30]) {
       database_shopping_cart(user_id, 1);
       database_shopping_cart(user_id, 0);
 
-      printf("您的商品购买完成, "
+      printf("您的菜品购买完成, "
              "谢谢惠顾!\n详细信息请前往\"主菜单-查看已完成订单\".\n");
     } else if (temp_return == 0)
-      printf("抱歉, 您选择的商品存货不足, 请选择其他商品.");
+      printf("抱歉, 您选择的菜品存货不足, 请选择其他菜品.");
     else
       printf("抱歉, 您的余额不足, 请先充值.");
 
@@ -141,7 +141,7 @@ int cart(char user_id[30]) {
     i = 0;
     k = 0;
     int temp_return;
-    printf("以下为购买状态(商品名 : 超市ID : 购买数量)\n");
+    printf("以下为购买状态(菜品名 : 饭店ID : 购买数量)\n");
 
     do {
 
@@ -168,11 +168,11 @@ int cart(char user_id[30]) {
     } while (shopping_cart[i].purchase_num != 0);
 
     if (k != 0)
-      printf("%d种商品购买完成, "
+      printf("%d种菜品购买完成, "
              "谢谢惠顾!\n详细信息请前往\"主菜单-查看已完成订单\".\n",
              k);
     else
-      printf("抱歉, 您选择的商品均无法购买, 请先充值或删除部分订单.");
+      printf("抱歉, 您选择的菜品均无法购买, 请先充值或删除部分订单.");
 
     char screen[10];
     printf("\n请输入任意字符并按回车键以继续...\n");
@@ -208,7 +208,7 @@ int cart_main(char user_id[30]) {
   }
 
   printf("您的购物车信息如下:\n");
-  printf("|序号\t|商品名\t\t|超市名\t\t|购买数量\n");
+  printf("|序号\t|菜品名\t\t|饭店名\t\t|购买数量\n");
   while (shopping_cart[i].purchase_num != 0) {
     printf("|%2d\t|%-15s\t|%-15s\t|%4d\n", i + 1, shopping_cart[i].goods_name,
            shopping_cart[i].shop_id, shopping_cart[i].purchase_num);

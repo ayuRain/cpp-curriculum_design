@@ -5,7 +5,7 @@ gcc main.cpp database.cpp login.cpp register.cpp search_order.cpp add_goods.cpp 
 
 ************************************************/
 
-#include "add_goods.h"//添加商品模块
+#include "add_goods.h"//添加菜品模块
 #include "buy_search_all.h"//购买搜索模块
 #include "cart.h"//
 #include "change_admin.h"
@@ -32,7 +32,7 @@ int consumer_choose() {
   // 用户界面
   printf("\n---------------欢迎进入顾客系统!----------------\n");
   printf("\n---------------请选择您需要的操作---------------\n");
-  printf("\n1. 商品查询.\n2. 查看购物车\n3. 查看已完成订单.\n"
+  printf("\n1. 菜品查询.\n2. 查看购物车\n3. 查看已完成订单.\n"
          "4. 充值与个人信息管理\n0. 退出.\n");
   printf("\n---------------------------------------------\n");
   printf("请按数字键选择要执行的操作:\n");
@@ -57,7 +57,7 @@ void consumer(char user_id[30]) {
 
   switch (choose) {
 
-  // 商品查询
+  // 菜品查询
   case 1: {
     buy_search_all(user_id);
     consumer(user_id);
@@ -103,7 +103,7 @@ int admin_choose_2() {
 
   // 用户界面
   printf("\n---------------请选择您需要的操作---------------\n");
-  printf("\n1. 查看现有商品.\n2. 添加新商品.\n0. 返回.\n");
+  printf("\n1. 查看现有菜品.\n2. 添加新菜品.\n0. 返回.\n");
   printf("\n---------------------------------------------\n");
   printf("请按数字键选择要执行的操作:\n");
 
@@ -121,21 +121,21 @@ int admin_choose_2() {
   return choose_num;
 }
 
-// 商品管理
+// 菜品管理
 void admin_2(char user_id[30]) {
 
   int choose = admin_choose_2();
 
   switch (choose) {
 
-  // 查看现有商品
+  // 查看现有菜品
   case 1: {
     print_shop_index_main(user_id);
     admin_2(user_id);
     break;
   }
 
-  // 添加新商品
+  // 添加新菜品
   case 2: {
     add_goods_main(user_id);
     admin_2(user_id);
@@ -158,7 +158,7 @@ int admin_choose() {
   // 用户界面
   printf("\n---------------欢迎进入管理员系统!--------------\n");
   printf("\n---------------请选择您需要的操作---------------\n");
-  printf("\n1. 订单管理.\n2. 商品管理.\n3. 个人信息管理.\n0. 退出.\n");
+  printf("\n1. 订单管理.\n2. 菜品管理.\n3. 个人信息管理.\n0. 退出.\n");
   printf("\n---------------------------------------------\n");
   printf("请按数字键选择要执行的操作:\n");
 
@@ -190,7 +190,7 @@ void admin(char user_id[30], int user_type) {
     break;
   }
 
-  // 商品管理
+  // 菜品管理
   case 2: {
     admin_2(user_id);
     admin(user_id, user_type);
@@ -220,7 +220,7 @@ int main_choose() {
   int choose_num;
 
   // 用户界面
-  printf("\n------------欢迎进入网上超市管理系统!------------\n");
+  printf("\n------------欢迎进入网上饭店管理系统!------------\n");
   printf("\n---------------请选择您需要的操作---------------\n");
   printf("\n1. 登陆.\n2. 注册.\n0. 退出.\n");
   printf("\n---------------------------------------------\n");

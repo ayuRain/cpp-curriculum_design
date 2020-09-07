@@ -7,7 +7,7 @@ extern void add_goods_result_1();
 // 选项2，取消发布
 extern void add_goods_result_2();
 
-//检查商品ID
+//检查菜品ID
 extern char *check_goods_id(char *temp_goods_id);
 
 // 检查单价

@@ -13,13 +13,13 @@ int cmp_goods_in_stock(const void *a, const void *b);
 // 统计营业期间的营业额
 extern void search_order_admin_result_1_1();
 
-// 按销量和营业额对商品进行排序
+// 按销量和营业额对菜品进行排序
 extern void search_order_admin_result_1_2();
 
-// 输出利润最高的商品和最低的商品
+// 输出利润最高的菜品和最低的菜品
 extern void search_order_admin_result_1_3();
 
-// 根据库存和销售情况判断商品中哪些需要进货、哪些存在滞销情况
+// 根据库存和销售情况判断菜品中哪些需要进货、哪些存在滞销情况
 extern void search_order_admin_result_1_4();
 
 // 选择菜单用户界面, 返回选项编号

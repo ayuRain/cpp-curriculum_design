@@ -51,7 +51,7 @@ int shopping(char user_id[30], char temp_goods_name[50], char temp_shop_id[50],
     database_consumer_information(user_id, 1);
 
     /************************************************
-    减掉商品清单中的库存, 销量加1
+    减掉菜品清单中的库存, 销量加1
     数据库: goods_index
     ************************************************/
 
@@ -81,7 +81,7 @@ int shopping(char user_id[30], char temp_goods_name[50], char temp_shop_id[50],
     增加管理员订单all
     数据库: order_admin_all
     ************************************************/
-    // 找到该货物所对应的超市名并存入订单
+    // 找到该货物所对应的饭店名并存入订单
     if (!database_order_admin_all(temp_shop_id, 0)) {
       for (i = 0; i <= 100; i++) {
         strcpy(order_admin_all[i].order_id, "");    // 订单编号
@@ -91,7 +91,7 @@ int shopping(char user_id[30], char temp_goods_name[50], char temp_shop_id[50],
         order_admin_all[i].sold_time.tm_mday = 0;   // ...
         order_admin_all[i].sold_time.tm_hour = 0;   // ...
         order_admin_all[i].sold_time.tm_min = 0;    // ...
-        strcpy(order_admin_all[i].goods_name, "");  // 商品名
+        strcpy(order_admin_all[i].goods_name, "");  // 菜品名
         order_admin_all[i].purchase_num = 0;        // 购买数量
         order_admin_all[i].unit_price = 0;          // 单价
         order_admin_all[i].all_price = 0;
@@ -126,7 +126,7 @@ int shopping(char user_id[30], char temp_goods_name[50], char temp_shop_id[50],
     order_admin_all[i].sold_time.tm_min = tm_local->tm_min;   // ...
 
     strcpy(order_admin_all[i].consumer_id, user_id);        // 顾客ID
-    strcpy(order_admin_all[i].goods_name, temp_goods_name); // 商品名
+    strcpy(order_admin_all[i].goods_name, temp_goods_name); // 菜品名
     order_admin_all[i].unit_price = temp_price;             // 单价
     order_admin_all[i].purchase_num = temp_purchase_num;    // 购买数量
     order_admin_all[i].all_price = temp_price * temp_purchase_num; // 总价
@@ -151,7 +151,7 @@ int shopping(char user_id[30], char temp_goods_name[50], char temp_shop_id[50],
         i++;
     }
     if (order_admin_goods[i].purchase_num == 0) {
-      strcpy(order_admin_goods[i].goods_name, temp_goods_name); // 商品名
+      strcpy(order_admin_goods[i].goods_name, temp_goods_name); // 菜品名
       order_admin_goods[i].purchase_num = temp_purchase_num;    // 销量
       order_admin_goods[i].all_price = temp_price * temp_purchase_num; // 总价
       order_admin_goods[i].profit = temp_profit * temp_purchase_num;   // 利润
@@ -217,7 +217,7 @@ int shopping(char user_id[30], char temp_goods_name[50], char temp_shop_id[50],
     strcat(order_consumer[i].order_id, time_str);
 
     strcpy(order_consumer[i].sold_time, time_str);         // 购买时间
-    strcpy(order_consumer[i].goods_name, temp_goods_name); // 商品名
+    strcpy(order_consumer[i].goods_name, temp_goods_name); // 菜品名
     order_consumer[i].purchase_num = temp_purchase_num;    // 购买数量
     order_consumer[i].unit_price = temp_price;             // 单价
     order_consumer[i].all_price = temp_price * temp_purchase_num; // 总价

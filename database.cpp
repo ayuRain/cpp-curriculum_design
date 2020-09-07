@@ -33,7 +33,7 @@ int database_admin_information(char user_id[30], int read_type) {
 
     // 读取数据
     fscanf(fwrite, "%s %s %s %s",
-           admin_information.shop_id, // 超市名
+           admin_information.shop_id, // 饭店名
            admin_information.name,    // 管理员姓名
            admin_information.email,   // 邮箱
            admin_information.password // 密码
@@ -46,7 +46,7 @@ int database_admin_information(char user_id[30], int read_type) {
 
     // 写入数据
     fprintf(fwrite, "%s %s %s %s",
-            admin_information.shop_id, // 超市名
+            admin_information.shop_id, // 饭店名
             admin_information.name,    // 管理员姓名
             admin_information.email,   // 邮箱
             admin_information.password // 密码
@@ -135,7 +135,7 @@ int database_goods_index(char user_id[30], int read_type) {
     // 读取数据
     while (!feof(fwrite)) {
       fscanf(fwrite, "%s %f %f %d %d %f %d:%d:%d:%d:%d %d:%d:%d:%d:%d",
-             goods_index[i].shop_id,             // 超市ID
+             goods_index[i].shop_id,             // 饭店ID
              &goods_index[i].unit_price,         // 单价
              &goods_index[i].in_price,           // 进价
              &goods_index[i].sales_volume,       // 销量
@@ -164,7 +164,7 @@ int database_goods_index(char user_id[30], int read_type) {
       fprintf(fwrite,
               "%s %0.2f %0.2f %d %d %0.2f %04d:%02d:%02d:%02d:%02d "
               "%04d:%02d:%02d:%02d:%02d\n",
-              goods_index[i].shop_id,            // 超市ID
+              goods_index[i].shop_id,            // 饭店ID
               goods_index[i].unit_price,         // 单价
               goods_index[i].in_price,           // 进价
               goods_index[i].sales_volume,       // 销量
@@ -222,7 +222,7 @@ int database_order_admin_all(char shop_id[30], int read_type) {
              &order_admin_all[i].sold_time.tm_mday, // ...
              &order_admin_all[i].sold_time.tm_hour, // ...
              &order_admin_all[i].sold_time.tm_min,  // ...
-             order_admin_all[i].goods_name,         // 商品名
+             order_admin_all[i].goods_name,         // 菜品名
              &order_admin_all[i].purchase_num,      // 购买数量
              &order_admin_all[i].unit_price,        // 单价
              &order_admin_all[i].all_price          // 总价
@@ -244,7 +244,7 @@ int database_order_admin_all(char shop_id[30], int read_type) {
               order_admin_all[i].sold_time.tm_mday, // ...
               order_admin_all[i].sold_time.tm_hour, // ...
               order_admin_all[i].sold_time.tm_min,  // ...
-              order_admin_all[i].goods_name,        // 商品名
+              order_admin_all[i].goods_name,        // 菜品名
               order_admin_all[i].purchase_num,      // 购买数量
               order_admin_all[i].unit_price,        // 单价
               order_admin_all[i].all_price          // 总价
@@ -286,12 +286,12 @@ int database_order_admin_consumer(char shop_id[30], int read_type) {
 
     fscanf(fwrite, "%s %s %d",
            order_admin_consumer[i].consumer_id,  // 顾客ID
-           order_admin_consumer[i].goods_name,   //商品名
+           order_admin_consumer[i].goods_name,   //菜品名
            &order_admin_consumer[i].purchase_num // 购买数量
     );
     if (read_type == -1) {
       if (order_admin_consumer[i].purchase_num != 0) {
-        printf("以下为该超市最受欢迎的商品名, 欢迎选购:\n");
+        printf("以下为该饭店最受欢迎的菜品名, 欢迎选购:\n");
         printf("%s\n", order_admin_consumer[i].goods_name);
       }
     }
@@ -304,7 +304,7 @@ int database_order_admin_consumer(char shop_id[30], int read_type) {
     while (order_admin_consumer[i].purchase_num != 0) {
       fprintf(fwrite, "%s %s %d\n",
               order_admin_consumer[i].consumer_id, // 顾客ID
-              order_admin_consumer[i].goods_name,  //商品名
+              order_admin_consumer[i].goods_name,  //菜品名
               order_admin_consumer[i].purchase_num // 购买数量
       );
       i++;
@@ -340,7 +340,7 @@ int database_order_admin_goods(char shop_id[30], int read_type) {
     // 读取数据
     while (!feof(fwrite)) {
       fscanf(fwrite, "%s %d %f %f",
-             order_admin_goods[i].goods_name,    // 商品名
+             order_admin_goods[i].goods_name,    // 菜品名
              &order_admin_goods[i].purchase_num, // 购买数量
              &order_admin_goods[i].all_price,    // 营业额
              &order_admin_goods[i].profit        // 利润
@@ -356,7 +356,7 @@ int database_order_admin_goods(char shop_id[30], int read_type) {
 
     while (order_admin_goods[i].purchase_num != 0) {
       fprintf(fwrite, "%s %d %0.2f %0.2f\n",
-              order_admin_goods[i].goods_name,   // 商品名
+              order_admin_goods[i].goods_name,   // 菜品名
               order_admin_goods[i].purchase_num, // 购买数量
               order_admin_goods[i].all_price,    // 营业额
               order_admin_goods[i].profit        // 利润
@@ -397,7 +397,7 @@ int database_order_consumer(char user_id[30], int read_type) {
       fscanf(fwrite, "%s %s %s %d %f %f",
              order_consumer[i].order_id,      // 订单编号
              order_consumer[i].sold_time,     // 购买时间
-             order_consumer[i].goods_name,    // 商品名
+             order_consumer[i].goods_name,    // 菜品名
              &order_consumer[i].purchase_num, // 购买数量
              &order_consumer[i].unit_price,   // 单价
              &order_consumer[i].all_price     // 总价
@@ -414,7 +414,7 @@ int database_order_consumer(char user_id[30], int read_type) {
       fprintf(fwrite, "%s %s %s %d %0.2f %0.2f\n",
               order_consumer[i].order_id,     // 订单编号
               order_consumer[i].sold_time,    // 购买时间
-              order_consumer[i].goods_name,   // 商品名
+              order_consumer[i].goods_name,   // 菜品名
               order_consumer[i].purchase_num, // 购买数量
               order_consumer[i].unit_price,   // 单价
               order_consumer[i].all_price     // 总价
@@ -482,7 +482,7 @@ int database_shop_index(char user_id[30], int read_type) {
       fprintf(fwrite,
               "%s %0.2f %0.2f %d %d %0.2f %04d:%02d:%02d:%02d:%02d "
               "%04d:%02d:%02d:%02d:%02d\n",
-              shop_index[i].goods_name,         // 商品名
+              shop_index[i].goods_name,         // 菜品名
               shop_index[i].unit_price,         // 零售价格
               shop_index[i].in_price,           // 进货价格
               shop_index[i].sales_volume,       // 销量
@@ -535,7 +535,7 @@ int database_shopping_cart(char user_id[30], int read_type) {
     while (!feof(fwrite)) {
 
       fscanf(fwrite, "%s %s %d",
-             shopping_cart[i].goods_name,   // 商品名
+             shopping_cart[i].goods_name,   // 菜品名
              shopping_cart[i].shop_id,      // 管理员ID
              &shopping_cart[i].purchase_num // 购买数量
       );
@@ -551,7 +551,7 @@ int database_shopping_cart(char user_id[30], int read_type) {
     for (i = 0; i <= 98; i++) {
       if (shopping_cart[i].purchase_num != -1)
         fprintf(fwrite, "%s %s %d\n",
-                shopping_cart[i].goods_name,  // 商品名
+                shopping_cart[i].goods_name,  // 菜品名
                 shopping_cart[i].shop_id,     // 管理员ID
                 shopping_cart[i].purchase_num // 购买数量
         );
@@ -589,7 +589,7 @@ void database_all_index(int read_type, char goods_name[30], char shop_id[30]) {
         break;
 
       fscanf(fwrite, "%s %s",
-             goods_name, // 商品名
+             goods_name, // 菜品名
              shop_id     // 管理员ID
       );
       if (strcmp(goods_name, "") == 0)

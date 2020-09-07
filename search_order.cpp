@@ -52,7 +52,7 @@ void search_order_admin_result_1_1() {
   return;
 }
 
-// 按销量和营业额对商品进行排序
+// 按销量和营业额对菜品进行排序
 void search_order_admin_result_1_2() {
   int deep_num = 0, i = 0;                                // 循环变量
   while (order_admin_goods[deep_num].purchase_num != 0) { // 遍历求深度
@@ -63,10 +63,10 @@ void search_order_admin_result_1_2() {
         cmp_purchase_num);
 
   printf("\n对销量排序结果如下:\n");
-  printf("|商品名\t\t|销量\t|营业额\t\t|利润\n");
+  printf("|菜品名\t\t|销量\t|营业额\t\t|利润\n");
   for (i = 0; i < deep_num; i++)
     printf("|%-16s\t|%d\t|%-8.2f\t|%0.2f\n",
-           order_admin_goods[i].goods_name,   // 商品名
+           order_admin_goods[i].goods_name,   // 菜品名
            order_admin_goods[i].purchase_num, // 销量
            order_admin_goods[i].all_price,    // 营业额
            order_admin_goods[i].profit        // 利润
@@ -76,10 +76,10 @@ void search_order_admin_result_1_2() {
         cmp_all_price);
 
   printf("\n对营业额排序结果如下:\n");
-  printf("|商品名\t\t|销量\t|营业额\t\t|利润\n");
+  printf("|菜品名\t\t|销量\t|营业额\t\t|利润\n");
   for (i = 0; i < deep_num; i++)
     printf("|%-16s\t|%d\t|%-8.2f\t|%0.2f\n",
-           order_admin_goods[i].goods_name,   // 商品名
+           order_admin_goods[i].goods_name,   // 菜品名
            order_admin_goods[i].purchase_num, // 销量
            order_admin_goods[i].all_price,    // 营业额
            order_admin_goods[i].profit        // 利润
@@ -91,7 +91,7 @@ void search_order_admin_result_1_2() {
   return;
 }
 
-// 输出利润最高的商品和最低的商品
+// 输出利润最高的菜品和最低的菜品
 void search_order_admin_result_1_3() {
   int deep_num = 0, i = 0;                                // 循环变量
   while (order_admin_goods[deep_num].purchase_num != 0) { // 遍历求深度
@@ -101,13 +101,13 @@ void search_order_admin_result_1_3() {
   qsort(order_admin_goods, deep_num, sizeof(order_admin_goods[0]), cmp_profit);
 
   printf("\n对利润排序结果如下:\n");
-  printf("|商品名\t\t|销量\t|营业额\t\t|利润\n");
+  printf("|菜品名\t\t|销量\t|营业额\t\t|利润\n");
   for (i = 0; i < deep_num; i++)
     printf("|%-16s\t|%d\t|%-8.2f\t|%0.2f\n",
            order_admin_goods[i].goods_name, //
            order_admin_goods[i].purchase_num, order_admin_goods[i].all_price,
            order_admin_goods[i].profit);
-  printf("\n利润最高的商品为:%s\n利润最低的商品为:%s\n",
+  printf("\n利润最高的菜品为:%s\n利润最低的菜品为:%s\n",
          order_admin_goods[0].goods_name,
          order_admin_goods[deep_num - 1].goods_name);
 
@@ -117,7 +117,7 @@ void search_order_admin_result_1_3() {
   return;
 }
 
-// 根据库存和销售情况判断商品中哪些需要进货、哪些存在滞销情况
+// 根据库存和销售情况判断菜品中哪些需要进货、哪些存在滞销情况
 void search_order_admin_result_1_4() {
   int deep_num = 0, i = 0;                     // 循环变量
   while (shop_index[deep_num].in_price != 0) { // 遍历求深度
@@ -127,7 +127,7 @@ void search_order_admin_result_1_4() {
   qsort(shop_index, deep_num, sizeof(shop_index[0]), cmp_goods_in_stock);
 
   int temp = 1; // 记录是否为"无"
-  printf("\n需要补充库存的商品名:\n");
+  printf("\n需要补充库存的菜品名:\n");
   for (i = 0; i < deep_num; i++)
     if (shop_index[i].goods_in_stock == 0) {
       printf("%s\n", shop_index[i].goods_name);
@@ -137,7 +137,7 @@ void search_order_admin_result_1_4() {
     printf("无\n");
 
   temp = 1;
-  printf("\n滞销的商品名:\n");
+  printf("\n滞销的菜品名:\n");
   for (i = 0; i < deep_num; i++)
     if (shop_index[i].sales_volume == 0) {
       printf("%s\n", shop_index[i].goods_name);
@@ -158,8 +158,8 @@ int search_order_admin_choose_1() {
 
   // 用户界面
   printf("\n---------------操作选项---------------\n\n");
-  printf("1. 统计营业期间的营业额.\n2. 对商品进行排序.\n");
-  printf("3. 利润最高和最低的商品.\n4. 进货需求与滞销商品查看.\n0. 返回.\n");
+  printf("1. 统计营业期间的营业额.\n2. 对菜品进行排序.\n");
+  printf("3. 利润最高和最低的菜品.\n4. 进货需求与滞销菜品查看.\n0. 返回.\n");
   printf("\n-------------------------------------\n");
   printf("请按数字键选择要执行的操作:\n");
 
@@ -189,21 +189,21 @@ void search_order_admin_result_1() {
     break;
   }
 
-  // 按销量和营业额对商品进行排序
+  // 按销量和营业额对菜品进行排序
   case 2: {
     search_order_admin_result_1_2();
     search_order_admin_result_1();
     break;
   }
 
-  // 输出利润最高的商品和最低的商品
+  // 输出利润最高的菜品和最低的菜品
   case 3: {
     search_order_admin_result_1_3();
     search_order_admin_result_1();
     break;
   }
 
-  // 根据库存和销售情况判断商品中哪些需要进货、哪些存在滞销情况
+  // 根据库存和销售情况判断菜品中哪些需要进货、哪些存在滞销情况
   case 4: {
     search_order_admin_result_1_4();
     search_order_admin_result_1();
@@ -223,7 +223,7 @@ void search_order_admin_result_2() {
 
   int i = 0; // 循环变量
   printf("\n您店内的所有订单如下:\n");
-  printf("|订单编号\t\t|顾客ID\t|购买时间\t\t|商品ID\t|商品名\t\t"
+  printf("|订单编号\t\t|顾客ID\t|购买时间\t\t|菜品ID\t|菜品名\t\t"
          "|购买数量\t"
          "|单价\t|总价\n");
   while (order_admin_all[i].purchase_num != 0) {
@@ -238,8 +238,8 @@ void search_order_admin_result_2() {
            order_admin_all[i].sold_time.tm_mday, // ...
            order_admin_all[i].sold_time.tm_hour, // ...
            order_admin_all[i].sold_time.tm_min,  // ...
-           name_to_id_goods_id,                  // 商品ID
-           order_admin_all[i].goods_name,        // 商品���
+           name_to_id_goods_id,                  // 菜品ID
+           order_admin_all[i].goods_name,        // 菜品���
            order_admin_all[i].purchase_num,      // 购买数量
            order_admin_all[i].unit_price,        // 单价
            order_admin_all[i].all_price          // 总价
@@ -353,7 +353,7 @@ int search_order_consumer_main(char user_id[15]) {
 
   // 顾客: 打印数据
   printf("\n");
-  printf("|订单编号\t\t|购买时间\t\t|商品ID\t|商品名\t\t"
+  printf("|订单编号\t\t|购买时间\t\t|菜品ID\t|菜品名\t\t"
          "|购买数量\t"
          "|单价\t\t\t|总价\n");
 

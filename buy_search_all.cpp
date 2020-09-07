@@ -12,7 +12,7 @@ int buy_search_all_choose() {
 
   // 用户界面
   printf("\n---------------操作选项---------------\n\n");
-  printf("1. 搜索商品名.\n2. 搜索超市名.\n0. 返回.\n");
+  printf("1. 搜索菜品名.\n2. 搜索饭店名.\n0. 返回.\n");
   printf("\n-------------------------------------\n");
   printf("请按数字键选择要执行的操作:\n");
 
@@ -29,7 +29,7 @@ int buy_search_all_choose() {
 }
 
 int buy_search_all(char user_id[30]) {
-  printf("\n以下为我们推荐的部分商品清单(商品名 : 超市名), "
+  printf("\n以下为我们推荐的部分菜品清单(菜品名 : 饭店名), "
          "您可以参考其ID进行更准确的搜索, 祝您购物愉快.\n");
 
   char temp_a[5] = "true", temp_b[6] = "false";

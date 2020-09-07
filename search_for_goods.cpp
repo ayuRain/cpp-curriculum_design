@@ -49,7 +49,7 @@ int search_goods_choose_0() {
 
 void search_goods_result_0(char user_id[30], int choise_num) {
 
-  char num_purchase[11],  // 顾客购买的超市编号
+  char num_purchase[11],  // 顾客购买的饭店编号
       goods_purchase[11]; // 顾客购买的物品数量
   int num_purchase_num,   // 用于将顾客购买的字符串变为数字
       goods_purchase_num, // 用于将顾客购买的物品数量字符串转化为数字
@@ -57,7 +57,7 @@ void search_goods_result_0(char user_id[30], int choise_num) {
       k = 0;
 
   do {
-    printf("\n请选择您想购买的商品(按0返回)\n");
+    printf("\n请选择您想购买的菜品(按0返回)\n");
     scanf("%s", num_purchase);
 
     // 检验输入是否正确
@@ -91,7 +91,7 @@ void search_goods_result_0(char user_id[30], int choise_num) {
   i = 0;
   k = 0;
   do {
-    printf("\n请选择您购买商品的件数(按0返回)\n");
+    printf("\n请选择您购买菜品的件数(按0返回)\n");
     scanf("%s", goods_purchase);
 
     if (strcmp(goods_purchase, "0") == 0) {
@@ -126,7 +126,7 @@ void search_goods_result_0(char user_id[30], int choise_num) {
     i++;
   }
 
-  printf("您的订单为:\n商品名: %s\n超市编号: %s\n购买数量: %d\n",
+  printf("您的订单为:\n菜品名: %s\n饭店编号: %s\n购买数量: %d\n",
          temp_information_item, temp_information_market[num_purchase_num - 1],
          goods_purchase_num);
   printf("\n请输入任意字符并按回车键以继续...\n");
@@ -140,10 +140,10 @@ void search_goods_result_0(char user_id[30], int choise_num) {
                       temp_information_market[num_purchase_num - 1],
                       goods_purchase_num);
     if (choose == 1)
-      printf("您的商品购买完成, "
+      printf("您的菜品购买完成, "
              "谢谢惠顾!\n详细信息请前往\"主菜单-查看已完成订单\".\n");
     else if (choose == 0)
-      printf("抱歉, 您选择的商品存货不足, 请选择其他商品.");
+      printf("抱歉, 您选择的菜品存货不足, 请选择其他菜品.");
     else if (choose == -1)
       printf("抱歉, 您的余额不足, 请先充值.");
 
@@ -155,7 +155,7 @@ void search_goods_result_0(char user_id[30], int choise_num) {
 
   else if (choose == 2) {
     strcpy(shopping_cart[i].goods_name,
-           temp_information_item); // 商品ID
+           temp_information_item); // 菜品ID
     strcpy(shopping_cart[i].shop_id,
            temp_information_market[num_purchase_num - 1]); // 商店ID
     shopping_cart[i].purchase_num = goods_purchase_num;    // 购买数量
@@ -168,16 +168,16 @@ void search_goods_result_0(char user_id[30], int choise_num) {
   return;
 }
 
-// 筛选打折的商品
+// 筛选打折的菜品
 void search_goods_result_1(char user_id[30]) {
   int i = 0, j = 0; //循环变量
-  printf("|序号\t|商品名\t\t|超市名\t\t|单价\t\t|折扣价\t\t|库存\t"
+  printf("|序号\t|菜品名\t\t|饭店名\t\t|单价\t\t|折扣价\t\t|库存\t"
          "|销量\t"
          "|折扣开始时间\t\t|折扣结束时间\n");
 
   while (goods_index[i].unit_price != 0) {
     if (fabs(goods_index[i].unit_price - goods_index[i].discount_price) >
-        0.000001) //打折后商品价格与原价格不等
+        0.000001) //打折后菜品价格与原价格不等
     {
       printf(
 
@@ -186,8 +186,8 @@ void search_goods_result_1(char user_id[30]) {
           "%02d:%02d\t"
           "|%04d:%02d:%02d:%02d:%02d\n",
           i + 1,                             // 列表序号
-          temp_information_item,             // 商品名
-          goods_index[i].shop_id,            // 超市名
+          temp_information_item,             // 菜品名
+          goods_index[i].shop_id,            // 饭店名
           goods_index[i].unit_price,         // 零售价格
           goods_index[i].discount_price,     // 折扣价
           goods_index[i].goods_in_stock,     // 存货
@@ -215,10 +215,10 @@ void search_goods_result_1(char user_id[30]) {
   return;
 }
 
-// 打印不打折的商品
+// 打印不打折的菜品
 void search_goods_result_2(char user_id[30]) {
   int i = 0; //循环变量
-  printf("|序号\t|商品名\t\t|超市名\t\t|单价\t\t|折扣价\t\t|库存\t"
+  printf("|序号\t|菜品名\t\t|饭店名\t\t|单价\t\t|折扣价\t\t|库存\t"
          "|销量\t"
          "|折扣开始时间\t\t|折扣结束时间\n");
 
@@ -230,8 +230,8 @@ void search_goods_result_2(char user_id[30]) {
         "%02d:%02d\t"
         "|%04d:%02d:%02d:%02d:%02d\n",
         i + 1,                             // 列表序号
-        temp_information_item,             // 商品名
-        goods_index[i].shop_id,            // 超市名
+        temp_information_item,             // 菜品名
+        goods_index[i].shop_id,            //|饭店名
         goods_index[i].unit_price,         // 零售价格
         goods_index[i].discount_price,     // 折扣价
         goods_index[i].goods_in_stock,     // 存货
@@ -270,7 +270,7 @@ void search_goods_result_3(char user_id[30]) {
   qsort(goods_index, i, sizeof(goods_index[0]), cmp_sales_volume_goods);
 
   i = 0;
-  printf("|序号\t|商品名\t\t|超市名\t\t|单价\t\t|折扣价\t\t|库存\t"
+  printf("|序号\t|菜品名\t\t|饭店名\t\t|单价\t\t|折扣价\t\t|库存\t"
          "|销量\t"
          "|折扣开始时间\t\t|折扣结束时间\n");
 
@@ -282,8 +282,8 @@ void search_goods_result_3(char user_id[30]) {
         "%02d:%02d\t"
         "|%04d:%02d:%02d:%02d:%02d\n",
         i + 1,                             // 列表序号
-        temp_information_item,             // 商品名
-        goods_index[i].shop_id,            // 超市名
+        temp_information_item,             // 菜品名
+        goods_index[i].shop_id,            //|饭店名
         goods_index[i].unit_price,         // 零售价格
         goods_index[i].discount_price,     // 折扣价
         goods_index[i].goods_in_stock,     // 存货
@@ -322,7 +322,7 @@ void search_goods_result_4(char user_id[30]) {
   qsort(goods_index, i, sizeof(goods_index[0]), cmp_discount_price_goods);
 
   i = 0;
-  printf("|序号\t|商品名\t\t|超市名\t\t|单价\t\t|折扣价\t\t|库存\t"
+  printf("|序号\t|菜品名\t\t|饭店名\t\t|单价\t\t|折扣价\t\t|库存\t"
          "|销量\t"
          "|折扣开始时间\t\t|折扣结束时间\n");
 
@@ -334,8 +334,8 @@ void search_goods_result_4(char user_id[30]) {
         "%02d:%02d\t"
         "|%04d:%02d:%02d:%02d:%02d\n",
         i + 1,                             // 列表序号
-        temp_information_item,             // 商品名
-        goods_index[i].shop_id,            // 超市名
+        temp_information_item,             // 菜品名
+        goods_index[i].shop_id,            //|饭店名
         goods_index[i].unit_price,         // 零售价格
         goods_index[i].discount_price,     // 折扣价
         goods_index[i].goods_in_stock,     // 存货
@@ -368,9 +368,9 @@ int search_goods_choose() {
 
   // 用户界面
   printf("\n---------------操作选项---------------\n\n");
-  printf("1. 隐藏不打折的商品.\n");
-  printf("2. 显示全部相关商品.\n");
-  printf("3. 按超市销量排序.\n");
+  printf("1. 隐藏不打折的菜品.\n");
+  printf("2. 显示全部相关菜品.\n");
+  printf("3. |饭店销量排序.\n");
   printf("4. 按打折后价格排序.\n");
   printf("0. 返回\n");
   printf("\n-------------------------------------\n");
@@ -427,18 +427,18 @@ void search_goods_begin(char user_id[30]) {
     database_shopping_cart(user_id, 1);
   }
 
-  char search_id_goods[50]; // 顾客搜索的商品ID
+  char search_id_goods[50]; // 顾客搜索的菜品ID
 
   // 用户界面
-  printf("请输入您所要查询的商品名称:");
+  printf("请输入您所要查询的菜品名称:");
   scanf("%s", search_id_goods);
 
-  // 检查是否存在该商品
+  // 检查是否存在该菜品
 
   int i = 0, searched_result_num;
   searched_result_num = database_goods_index(search_id_goods, 0);
   if (searched_result_num != 1) {
-    printf("抱歉, 没有该商品, 请搜索其他信息.\n");
+    printf("抱歉, 没有该菜品, 请搜索其他信息.\n");
     printf("\n请输入任意字符并按回车键以继续...\n");
     char screen[50];
     scanf("%s", screen); // 延长屏幕显示时间
@@ -447,7 +447,7 @@ void search_goods_begin(char user_id[30]) {
   strcpy(temp_information_item, search_id_goods);
 
   printf("您的查询结果如下:\n");
-  printf("|序号\t|商品名\t\t|超市名\t\t|单价\t\t|折扣价\t\t|库存\t"
+  printf("|序号\t|菜品名\t\t|饭店名\t\t|单价\t\t|折扣价\t\t|库存\t"
          "|销量\t"
          "|折扣开始时间\t\t|折扣结束时间\n");
 
@@ -459,8 +459,8 @@ void search_goods_begin(char user_id[30]) {
         "%02d:%02d\t"
         "|%04d:%02d:%02d:%02d:%02d\n",
         i + 1,                             // 列表序号
-        temp_information_item,             // 商品名
-        goods_index[i].shop_id,            // 超市名
+        temp_information_item,             // 菜品名
+        goods_index[i].shop_id,            //|饭店名
         goods_index[i].unit_price,         // 零售价格
         goods_index[i].discount_price,     // 折扣价
         goods_index[i].goods_in_stock,     // 存货
